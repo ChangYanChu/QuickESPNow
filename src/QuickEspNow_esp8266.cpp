@@ -147,7 +147,7 @@ comms_send_error_t QuickEspNow::send (const uint8_t* dstAddress, const uint8_t* 
             waitingForConfirmation = true;
             DEBUG_INFO (QESPNOW_TAG, "--------- Waiting for send confirmation");
             while (waitingForConfirmation) {
-                esp_yield ();
+                yield();
             }
             DEBUG_INFO (QESPNOW_TAG, "--------- Confirmation is %s", sentStatus == ESP_NOW_SEND_SUCCESS ? "true" : "false");
             return (sentStatus == ESP_NOW_SEND_SUCCESS) ? COMMS_SEND_OK : COMMS_SEND_CONFIRM_ERROR;
